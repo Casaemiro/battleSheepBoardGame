@@ -68,3 +68,25 @@ td img {
     transition-duration: 100ms;
     font-weight: 400;
 }
+#topBar {
+    width: 100%;
+    display: flex;
+    /* background-color: blue; */
+    margin: 0 auto;
+    text-align: center;
+    flex-direction: column;
+}
+#gameName {
+    font-size: 2.2rem;
+    font-weight: bold;
+    text-align: center;
+    /* background-color: green; */
+    margin:5 auto;
+}
+#gameMoreInfo {
+    font-size: 1.4rem;
+    /* font-weight: bold; */
+    text-align: center;
+    /* background-color: grey; */
+    margin: 3 auto;
+}

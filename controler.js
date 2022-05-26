@@ -3,6 +3,7 @@
  let numberOFRows = 7;
  let inputText;
  let hiddenShipLocation = [];
+ let HitCounter = 0;
 // import {xCordinate,yCordinate,numberOFRows} from "./model.js";
 
 
@@ -49,6 +50,7 @@ function fireShip(){
     if(hiddenShipLocation.includes(inputText)){
         let CurrentShipCell = document.getElementById(inputText);
         CurrentShipCell.style.display = "block";
+        HitCounter++
     }else{
         console.log(inputText)
         let CurrentShipCell = document.getElementById(inputText);
@@ -78,4 +80,9 @@ function validateUserInpute(){
 const fireButton = document.getElementById("fire");
 fireButton.addEventListener("click",validateUserInpute);
 
+function checkWinConditions(){
+    if(HitCounter >= 3){
+        alert("YOU SANK MY BATTLESHIP");
+    }
+}
 

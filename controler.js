@@ -28,8 +28,6 @@ function randomlyPlaceThreeShips(){
     for(let i = 0; i < 3; i++){
         let randomCellrow = (Math.floor(Math.random() * (7 - 0) + 0))
         let randomCellcol = (Math.floor(Math.random() * (7 - 0) + 0))
-        console.log(xCordinate[randomCellrow])
-        console.log(yCordinate[randomCellcol])
         let tempCellId = yCordinate[randomCellcol] + xCordinate[randomCellrow];
         console.log(tempCellId)
         hiddenShipLocation.push(tempCellId);
@@ -37,6 +35,11 @@ function randomlyPlaceThreeShips(){
         tempCell.innerHTML = '<img src="./ship.png" >'
         tempCell.style.display = "none"
     }
+    const audioCtx = new AudioContext();
+    const audio = new Audio("mixkit-melodical-flute-music-notification-2310.wav");
+    const source = audioCtx.createMediaElementSource(audio);
+    source.connect(audioCtx.destination);
+    audio.play();
 }
 
 randomlyPlaceThreeShips()
@@ -51,6 +54,7 @@ function fireShip(){
         let CurrentShipCell = document.getElementById(inputText);
         CurrentShipCell.style.display = "block";
         HitCounter++
+        checkWinConditions()
     }else{
         console.log(inputText)
         let CurrentShipCell = document.getElementById(inputText);
@@ -64,7 +68,7 @@ function fireShip(){
 
 
 
-function validateUserInpute(){
+function validateUserInpute(){//Ensures that the user has entered the expected kind of input//______________
     inputText = document.getElementById("textInput").value;
     if(document.getElementById(inputText) != undefined && inputText.length == 2){
         console.log("validInput")
@@ -83,6 +87,7 @@ fireButton.addEventListener("click",validateUserInpute);
 function checkWinConditions(){
     if(HitCounter >= 3){
         alert("YOU SANK MY BATTLESHIP");
+        randomlyPlaceThreeShips()
     }
 }
 
